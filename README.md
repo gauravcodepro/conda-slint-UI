@@ -1,7 +1,9 @@
 # slint-UI
-- a slint UI for the anaconda package interactions.
+- a slint UI for the anaconda package interactions. javascript and slintUI
 - slint UI can be found at [slintUI](https://slint.dev/)
-- later shall be putting this behind the javascript and others.
+```
+cargo install slint-viewer
+```
 
 Gaurav \
 Academic Staff Member \
