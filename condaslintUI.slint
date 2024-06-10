@@ -2,9 +2,24 @@
 # Author Gaurav
 # Universitat Potsdam
 # Date 2024-6-6
-
 # A way to connect to the conda and search for the terms and get the conda generators.
-read -r -p "please provide the search term:" term
+term=$(slint-viewer - --save-data - << EOF
+import { StandardButton, GridBox, LineEdit } from "std-widgets.slint";
+component UserDataDialog inherits Dialog {
+    property name <=> name-le.condasearch;
+    StandardButton { kind: ok; }
+    StandardButton { kind: cancel; }
+    preferred-width: 300px;
+    GridBox {
+        Row {
+            Text { text: "Enter your conda search:"; }
+            name-le := LineEdit { }
+        }
+        }
+    }
+}
+EOF
+)
 wget -F "https://anaconda.org/search?q=${term}" -O condasearch.txt
 echo "all term fetched"
 cat condasearch.txt | grep ${term} | \
